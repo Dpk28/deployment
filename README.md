@@ -15,6 +15,6 @@ Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/ge
 Clone the `deployment manifest files` locally.
 
 ```
-$ git clone https://github.com/Dpk28/deployment
+$ git clone https://github.com/Dpk28/deployment.git
 ```
 
