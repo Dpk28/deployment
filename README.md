@@ -1,6 +1,9 @@
 # Deployment 
 This repo contains all the manifest files for assignment application deployment on kubernetes cluster.
 
+# Deployment Diagram
+![Deployment](docs/deployment.jpg)
+
 # Prerequisite
 
 Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube) for local testing, or with any cloud provider (AWS, GC, Azure).
