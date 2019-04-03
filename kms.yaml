@@ -5,7 +5,6 @@ metadata:
   name: kms-service-deployment
   labels:
     app: kms-service
-  namespace: chainstack
 spec:
   replicas: 1
   template:
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
       - name: kms-service
-        image: kms-service:1.0
+        image: kms_service:1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4001
@@ -23,23 +22,23 @@ spec:
         - name: ENVIRONMENT
           value: prod
         - name: VAULT_URL
-          value: vault-service
+          value: http://vault-service:8300
         - name: VAULT_API_VERSION
           value: v1
-        - name: port
-          value: 4000
+        - name: VAULT_TOKEN
+          value: s.BK51uUtOrYw8z0Lj2EBxCTKJ
+        - name: PORT
+          value: 4001
         readinessProbe:
           tcpSocket:
-            port: 4000
+            port: 4001
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           tcpSocket:
-            port: 4000
+            port: 4001
           initialDelaySeconds: 15
           periodSeconds: 20
-        restartPolicy: Always
-        terminationGracePeriodSeconds: 30
 
 ---
 apiVersion: v1
@@ -52,7 +51,7 @@ spec:
   selector:
     app: kms-service
   ports:
-  - port: 4000
+  - port: 4001
     protocol: TCP
     nodePort: 4001
   type: LoadBalancer

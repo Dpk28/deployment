@@ -6,10 +6,10 @@ metadata:
   labels:
     app: vault
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
-    - port: 8200
-      targetPort: 8200
+    - port: 8300
+      targetPort: 8300
       protocol: TCP
       name: vault
   selector:
@@ -31,14 +31,25 @@ spec:
     spec:
       containers:
       - name: vault
-        command: ["vault", "server", "-config", "/vault/config/vault.hcl"]
         image: "vault:1.1.0" 
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8300
+        env:
+        - name: VAULT_LOCAL_CONFIG
+          value: '{"listener": [{ "tcp": { "address": "0.0.0.0:8300", "tls_disable": true}}]}'
+        command: ["vault", "server", "-dev"]
+        readinessProbe:
+          tcpSocket:
+            port: 8300
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 8300
+          initialDelaySeconds: 15
+          periodSeconds: 20
         securityContext:
           capabilities:
             add:
               - IPC_LOCK
-        volumeMounts:
-          - name: configurations
-            mountPath: /vault/config/vault.hcl
-            subPath: vault.hcl
