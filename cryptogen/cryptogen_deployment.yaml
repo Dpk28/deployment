@@ -15,14 +15,14 @@ spec:
       containers:
       - name: cryptogen-service
         image: dpk28/cryptogen_service:1.0
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 4000
         env:
         - name: ENVIRONMENT
           value: "prod"
         - name: DB
-          value: "mongodb://mongodb-service:27017/cryptogen"
+          value: "mongodb://mongo:27017/cryptogen"
         - name: KMS_URL
           value: "http://kms-service:4001/api"
         - name: KMS_API_VERSION

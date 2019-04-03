@@ -6,10 +6,10 @@ metadata:
     name: mongo
   name: mongo
 spec:
-  type: LoadBalancer
+  selector:
+    app: mongo-cluster
   ports:
     - port: 27017
       targetPort: 27017
       protocol: TCP
-  selector:
-    name: mongo-cluster
+  type: ClusterIP

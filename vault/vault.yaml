@@ -17,21 +17,11 @@ spec:
         image: "vault:1.1.0" 
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8300
+        - containerPort: 8200
         env:
         - name: VAULT_LOCAL_CONFIG
           value: '{"listener": [{ "tcp": { "address": "0.0.0.0:8300", "tls_disable": true}}]}'
         command: ["vault", "server", "-dev"]
-        readinessProbe:
-          tcpSocket:
-            port: 8300
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 8300
-          initialDelaySeconds: 15
-          periodSeconds: 20
         securityContext:
           capabilities:
             add:
