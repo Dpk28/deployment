@@ -40,12 +40,12 @@ $ kubectl create -f vault/vault_service.yaml
 
 Create mongoDB deployment object 
 ```
-$ kubectl create -f mongo/mongo.yaml
+$ kubectl create -f mongodb/mongo.yaml
 ```
 
 Create mongoDB service object 
 ```
-$ kubectl create -f mongo/mongo_service.yaml
+$ kubectl create -f mongodb/mongo_service.yaml
 ```
 
 ### 4. Deploy KMS micro-service 
