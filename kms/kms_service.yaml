@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kms-service
+  labels:
+    app: kms-service
+spec:
+  selector:
+    app: kms-service
+  ports:
+  - port: 4001
+    protocol: TCP
+    nodePort: 4001
+  type: LoadBalancer
