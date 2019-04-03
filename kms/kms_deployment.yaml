@@ -20,7 +20,7 @@ spec:
         - containerPort: 4001
         env:
         - name: ENVIRONMENT
-          value: prod
+          value: "prod"
         - name: VAULT_URL
           value: "http://vault-service:8300"
         - name: VAULT_API_VERSION
@@ -28,7 +28,7 @@ spec:
         - name: VAULT_TOKEN
           value: "s.BK51uUtOrYw8z0Lj2EBxCTKJ"
         - name: PORT
-          value: 4001
+          value: "4001"
         readinessProbe:
           tcpSocket:
             port: 4001
