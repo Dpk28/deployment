@@ -20,8 +20,8 @@ spec:
         - containerPort: 8200
         env:
         - name: VAULT_LOCAL_CONFIG
-          value: '{"listener": [{ "tcp": { "address": "0.0.0.0:8300", "tls_disable": true}}]}'
-        command: ["vault", "server", "-dev"]
+          value: '{"listener": [{ "tcp": { "address": "0.0.0.0:8200", "tls_disable": true}}]}'
+        command: ["vault", "server", "-dev", "-dev-listen-address=0.0.0.0:8200"]
         securityContext:
           capabilities:
             add:
