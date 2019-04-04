@@ -11,6 +11,10 @@ Create a Kubernetes cluster with either [Minikube](https://kubernetes.io/docs/ge
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo)
+2. [Deploy vault](#2-deploy-vault)
+3. [Deploy mongo DB](#3-deploy-mongo)
+4. [Deploy KMS micro-service](#4-deploy-kms-micro-service)
+5. [Deploy cryptogen micro-service](#5-deploy-cryptogen-micro-service)
 
 
 ### 1. Clone the repo
